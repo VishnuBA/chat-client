@@ -1,1 +1,1 @@
-# chatbot-client
+# chat-client
