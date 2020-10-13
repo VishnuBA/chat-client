@@ -102,6 +102,9 @@
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
+console.log(sfconfig.SFServerURL);
+console.log(sfconfig.SFVFServerURL);
+console.log(sfconfig.SFInitCodeID);
             embedded_svc.init(
                 sfconfig.SFServerURL,
                 sfconfig.SFVFServerURL,
@@ -414,7 +417,7 @@
         };
 
 
-        $.getJSON('/hrblock/api/customer/help/configuration/vendor/salesforce/meta', function (result) {
+        $.getJSON('/config', function (result) {
 
             if (result) {
 
