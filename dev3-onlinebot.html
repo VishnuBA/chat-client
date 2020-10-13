@@ -176,9 +176,9 @@
 			console.log("Chat window is closed/destroyed");
 
             //Send stop-chat event for app team
-            if (parent.IsHybridAppUser()) {
-                parent.IpadAppSupport.MobileEventNotifier.sendNotification('stop-chat');
-			}
+//            if (parent.IsHybridAppUser()) {
+//                parent.IpadAppSupport.MobileEventNotifier.sendNotification('stop-chat');
+//			}
 
             //Disconnect chat bypass mutation observer
 			observer.observe(document, { attributes: false, childList: true, characterData: false, subtree: true });
