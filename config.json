@@ -1,5 +1,5 @@
 {
-    "fruit": "Apple",
-    "size": "Large",
-    "color": "Red"
+    "SFServerURL": "https://hrblockenterprise--dev1.my.salesforce.com",
+    "SFVFServerURL": "https://dev1-hrblockenterprise.cs198.force.com",
+    "SFInitCodeID": "00D050000008mMX"
 }
