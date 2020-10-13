@@ -230,9 +230,9 @@
 		var oaEvent = window.localStorage.getItem('OnlineAssistUpgradeAction');
 
         //Attaching mutation observer only in case when its on desktop or mobile responsive
-		if (parent && parent.IsHybridAppUser() == false && oaEvent && oaEvent.toLowerCase() === "chat") {
-            closeObserver.observe(document, { attributes: false, childList: true, characterData: false, subtree: true });
-		}		
+//		if (parent && parent.IsHybridAppUser() == false && oaEvent && oaEvent.toLowerCase() === "chat") {
+//            closeObserver.observe(document, { attributes: false, childList: true, characterData: false, subtree: true });
+//		}		
         
         embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
 
