@@ -20,16 +20,7 @@
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
-		  
-		var queryString = document.location.href;
-        var url = new URL(queryString);
-		var firstName = url.searchParams.get("first_name");
-        var lastName = url.searchParams.get("last_name");
-        var emailAddress = url.searchParams.get("email_address");
-        var diyConsentFlag = url.searchParams.get("diy_consent_flag");
-        var tcxId = url.searchParams.get("tcx_id");
-		console.log('FirstName: '+firstName+', LastName: '+lastName+', Email: '+emailAddress+', diyConsentFlag:'+diyConsentFlag+', tcxId:'+tcxId);
-		
+		  		
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -129,12 +120,21 @@
 	var fetchConfigurationParams = function () {
         $.getJSON('/chat-client/config.json', function (config) {
 
+        var queryString = document.location.href;
+        var url = new URL(queryString);
+		var firstName = url.searchParams.get("first_name");
+        var lastName = url.searchParams.get("last_name");
+        var emailAddress = url.searchParams.get("email_address");
+        var diyConsentFlag = url.searchParams.get("diy_consent_flag");
+        var tcxId = url.searchParams.get("tcx_id");
+		console.log('FirstName: '+firstName+', LastName: '+lastName+', Email: '+emailAddress+', diyConsentFlag:'+diyConsentFlag+', tcxId:'+tcxId);
+		
             embedded_svc.settings.prepopulatedPrechatFields = {
                   FirstName: (firstName)?firstName:'',
                   LastName: (lastName)?lastName:'',
                   Email: (emailAddress)?emailAddress:''
 			};
-			SetHRBCustomParameters(config);
+			SetHRBCustomParameters(firstName);
 
 			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
 
