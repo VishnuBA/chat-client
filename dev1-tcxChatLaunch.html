@@ -55,7 +55,7 @@
 
 		<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
 	var fetchConfigurationParams = function () {
-            $.getJSON('/hrblock/api/customer/help/configuration/vendor/salesforce/chatparams', function (config) {
+            $.getJSON('/chat-client/chatparams.json', function (config) {
 
                 embedded_svc.settings.prepopulatedPrechatFields = {
                   FirstName: config.first_name.Value,
