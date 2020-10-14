@@ -67,10 +67,9 @@
 	<!-- event handlers STARTS here -->
 	embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
 		console.log("onHelpButtonClick event was fired.");
-			window.parent.ToggleChatIcon(false);
 
-            //HRB custom implementation
-			fetchConfigurationParams();
+		//HRB custom implementation
+		fetchConfigurationParams();
 	});
 
 	embedded_svc.addEventHandler("onChatRequestSuccess", function (data) {
