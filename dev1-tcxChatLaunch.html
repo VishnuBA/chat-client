@@ -129,7 +129,7 @@
                   LastName: config.last_name.Value,
                   Email: config.email_address.Value
 			};
-			console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
+			console.log('FirstName: '+config.first_name.Value+', LastName: '+config.last_name.Value+', Email: '+config.email_address.Value);
 			SetHRBCustomParameters(config);
 
 			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
