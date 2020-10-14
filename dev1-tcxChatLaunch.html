@@ -134,7 +134,9 @@
                   LastName: (lastName)?lastName:'',
                   Email: (emailAddress)?emailAddress:''
 			};
-			SetHRBCustomParameters(config);
+			var obj = JSON.parse(firstName);
+			console.log(obj);
+			SetHRBCustomParameters(firstName);
 
 			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
 
