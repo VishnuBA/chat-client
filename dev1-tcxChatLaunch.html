@@ -186,26 +186,26 @@
 
 			window.parent.ToggleChatIcon(false);
 			window.parent.MaximizeChatFrame(true);
-            });
-        };
+		});
+    };
 
-        var sfHrbExtraPreChatFormArray = [];
+	var sfHrbExtraPreChatFormArray = [];
 
-        var SetHRBCustomParameters = function (obj) {
+	var SetHRBCustomParameters = function (obj) {
 
-            var props = Object.getOwnPropertyNames(obj);
-            props.forEach(function (p) {
+		var props = Object.getOwnPropertyNames(obj);
+		props.forEach(function (p) {
 
-                if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
-                    sfHrbExtraPreChatFormArray.push({
-                        label: p, value: obj[p].Value, displayToAgent: true
-                    });
-                }
-                else {
-                    sfHrbExtraPreChatFormArray.push({
-                        label: p, value: obj[p].Value, displayToAgent: true, transcriptFields: [p]
-                    });
-                }
+			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
+				sfHrbExtraPreChatFormArray.push({
+					label: p, value: obj[p].Value, displayToAgent: true
+				});
+			}
+			else {
+				sfHrbExtraPreChatFormArray.push({
+					label: p, value: obj[p].Value, displayToAgent: true, transcriptFields: [p]
+				});
+			}
 		});
 		return;
     };
@@ -221,6 +221,7 @@
 	  } else {
 		initESW('https://service.force.com');
 	  }
+	  
 	</script>
 	<! -- chat agent - embedded service deployment code snippet added ENDS here -->
   </body>
