@@ -58,7 +58,7 @@
         );
       };
 	  
-//	//Code to bypass prechat form
+	//Code to bypass prechat form
 //	$(document).on('DOMNodeInserted', ".prechatUI.embeddedServiceLiveAgentStatePrechatDefaultUI", function (e) {
 //			if(associateFName && associateLName)
 //				$(".startButton.uiButton--default.uiButton.embeddedServiceSidebarButton").click();
@@ -67,8 +67,18 @@
 	<!-- event handlers STARTS here -->
 	embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
 		console.log("onHelpButtonClick event was fired.");
-		//HRB custom implementation
-		fetchConfigurationParams();
+			window.parent.ToggleChatIcon(false);
+
+            //Show cobrowse screenshare button
+			parent.ShowCobrowseLink();
+
+            //Send start-chat event for app team
+//            if (parent.IsHybridAppUser()) {
+//                parent.IpadAppSupport.MobileEventNotifier.sendNotification('start-chat');
+//			}
+
+            //HRB custom implementation
+			fetchConfigurationParams();
 	});
 
 	embedded_svc.addEventHandler("onChatRequestSuccess", function (data) {
