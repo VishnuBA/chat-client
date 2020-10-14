@@ -212,12 +212,12 @@
 			console.log('p: '+p+', value: '+obj[p].valueOf());
 			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
 				sfHrbExtraPreChatFormArray.push({
-					label: p, value: obj[p]..valueOf(), displayToAgent: true
+					label: p, value: obj[p].valueOf(), displayToAgent: true
 				});
 			}
 			else {
 				sfHrbExtraPreChatFormArray.push({
-					label: p, value: obj[p]..valueOf(), displayToAgent: true, transcriptFields: [p]
+					label: p, value: obj[p].valueOf(), displayToAgent: true, transcriptFields: [p]
 				});
 			}
 		});
