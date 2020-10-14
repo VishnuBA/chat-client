@@ -69,14 +69,6 @@
 		console.log("onHelpButtonClick event was fired.");
 			window.parent.ToggleChatIcon(false);
 
-            //Show cobrowse screenshare button
-			parent.ShowCobrowseLink();
-
-            //Send start-chat event for app team
-//            if (parent.IsHybridAppUser()) {
-//                parent.IpadAppSupport.MobileEventNotifier.sendNotification('start-chat');
-//			}
-
             //HRB custom implementation
 			fetchConfigurationParams();
 	});
@@ -242,3 +234,4 @@
   <! -- chat agent - embedded service deployment code snippet added ENDS here -->
   </body>
 </html>
+
