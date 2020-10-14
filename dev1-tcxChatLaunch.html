@@ -51,7 +51,13 @@
           }
         );
       };
-
+	  
+	//Code to bypass prechat form
+	$(document).on('DOMNodeInserted', ".prechatUI.embeddedServiceLiveAgentStatePrechatDefaultUI", function (e) {
+			if(associateFName && associateLName)
+				$(".startButton.uiButton--default.uiButton.embeddedServiceSidebarButton").click();
+	});
+			
 	<!-- event handlers STARTS here -->
 	embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
 		console.log("onHelpButtonClick event was fired.");
