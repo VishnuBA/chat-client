@@ -130,11 +130,11 @@
 //        var tcxId = url.searchParams.get("tcx_id");
 //		console.log('FirstName: '+firstName+', LastName: '+lastName+', Email: '+emailAddress+', diyConsentFlag:'+diyConsentFlag+', tcxId:'+tcxId);
 		
-//            embedded_svc.settings.prepopulatedPrechatFields = {
-//					FirstName: config.first_name.Value,
-//					LastName: config.last_name.Value,
-//					Email: config.email_address.Value
-//			};
+            embedded_svc.settings.prepopulatedPrechatFields = {
+					FirstName: config.first_name.Value,
+					LastName: config.last_name.Value,
+					Email: config.email_address.Value
+			};
 
 			SetHRBCustomParameters(config);
 
@@ -194,6 +194,7 @@
 
 			console.log("Salesforce ExtraPreChatFormDetails:");
 			console.log(sfHrbExtraPreChatFormArray);
+			console.log(extraPrechatInfo);
 
 			sfHrbExtraPreChatFormArray = [];
 
