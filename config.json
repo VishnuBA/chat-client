@@ -5,5 +5,12 @@
     "SFBaseLiveAgentContentURL": "https://c.la2-c1cs-ia4.salesforceliveagent.com/content",
     "SFDeploymentId": "5723k000000bxPd",
     "SFButtonID": "5733k000000g9uS",
-    "SFBaseLiveAgentURL": "https://d.la2-c1cs-ia4.salesforceliveagent.com/chat"
+    "SFBaseLiveAgentURL": "https://d.la2-c1cs-ia4.salesforceliveagent.com/chat",
+    "first_name": "",
+    "last_name": "",
+    "email_address": "",
+    "user_guid": "",
+    "hrblock_atp": "",
+    "online_user_id": "",
+    "subject": ""
 }
