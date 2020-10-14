@@ -28,6 +28,7 @@
         var emailAddress = url.searchParams.get("email_address");
         var diyConsentFlag = url.searchParams.get("diy_consent_flag");
         var tcxId = url.searchParams.get("tcx_id");
+		console.log('FirstName: '+firstName+', LastName: '+lastName+', Email: '+emailAddress+', diyConsentFlag:'+diyConsentFlag+', tcxId:'+tcxId);
 		
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -133,7 +134,6 @@
                   LastName: (lastName)?lastName:'',
                   Email: (emailAddress)?emailAddress:''
 			};
-			console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
 			SetHRBCustomParameters(config);
 
 			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
