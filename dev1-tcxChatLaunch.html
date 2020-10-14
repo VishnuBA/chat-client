@@ -52,6 +52,62 @@
         );
       };
 
+	<!-- event handlers STARTS here -->
+	embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
+		console.log("onHelpButtonClick event was fired.");
+		//HRB custom implementation
+		fetchConfigurationParams();
+	});
+
+	embedded_svc.addEventHandler("onChatRequestSuccess", function (data) {
+		console.log("onChatRequestSuccess event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatEstablished", function (data) {
+		console.log("onChatEstablished event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChasitorMessage", function (data) {
+		console.log("onChasitorMessage event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+		//HRB custom implementation, extending TCX session time out as long as client is exchanging messages
+		parent.PageActions.ExtendTCXSession();
+
+	});
+	embedded_svc.addEventHandler("onAgentMessage", function (data) {
+		console.log("onAgentMessage event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatConferenceInitiated", function (data) {
+		console.log("onChatConferenceInitiated event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onAgentJoinedConference", function (data) {
+		console.log("onAgentJoinedConference event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onAgentLeftConference", function (data) {
+		console.log("onAgentLeftConference event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatConferenceEnded", function (data) {
+		console.log("onChatConferenceEnded event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatTransferSuccessful", function (data) {
+		console.log("onChatTransferSuccessful event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatEndedByChasitor", function (data) {
+		console.log("onChatEndedByChasitor event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatEndedByAgent", function (data) {
+		console.log("onChatEndedByAgent event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});	
+	<!-- event handlers ENDS here -->
+	
 	<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
 	var fetchConfigurationParams = function () {
         $.getJSON('/chat-client/chatparams.json', function (config) {
