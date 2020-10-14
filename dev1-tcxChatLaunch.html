@@ -20,6 +20,13 @@
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
+		  
+		var first_name = url.searchParams.get("first_name");
+        var last_name = url.searchParams.get("last_name");
+        var email_address = url.searchParams.get("email_address");
+        var diy_consent_flag = url.searchParams.get("diy_consent_flag");
+        var tcx_id = url.searchParams.get("tcx_id");
+		
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -120,11 +127,11 @@
         $.getJSON('/chat-client/config.json', function (config) {
 
             embedded_svc.settings.prepopulatedPrechatFields = {
-                  FirstName: config.first_name.Value,
-                  LastName: config.last_name.Value,
-                  Email: config.email_address.Value
+                  FirstName: first_name,
+                  LastName: last_name,
+                  Email: email_address
 			};
-			console.log('FirstName: '+config.first_name.Value+', LastName: '+config.last_name.Value+', Email: '+config.email_address.Value);
+			console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
 			SetHRBCustomParameters(config);
 
 			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
