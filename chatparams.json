@@ -1,5 +1,9 @@
 {
     "first_name": "",
     "last_name": "",
-    "email_address": ""
+    "email_address": "",
+    "user_guid": "",
+    "hrblock_atp": "",
+    "online_user_id": "",
+    "subject": "",
 }
