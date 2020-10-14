@@ -52,6 +52,104 @@
         );
       };
 
+	<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
+	var fetchConfigurationParams = function () {
+        $.getJSON('/chat-client/chatparams.json', function (config) {
+
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                  FirstName: config.first_name.Value,
+                  LastName: config.last_name.Value,
+                  Email: config.email_address.Value
+			};
+			console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
+			SetHRBCustomParameters(config);
+
+			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
+
+				if (sfHrbExtraPreChatFormArray[i].transcriptFields) {
+					sfHrbExtraPreChatFormArray[i].transcriptFields[0] = sfHrbExtraPreChatFormArray[i].transcriptFields[0] + "__c";
+				}
+			}
+			embedded_svc.settings.extraPrechatFormDetails = sfHrbExtraPreChatFormArray;
+
+			embedded_svc.settings.extraPrechatInfo = [
+				{
+					"entityName": "Contact",
+					"showOnCreate": true,
+					//"linkToEntityName": "Case",
+					"linkToEntityField": "ContactId",
+					"saveToTranscript": "Contact",
+					"entityFieldMaps": [{
+						"isExactMatch": true,
+						"fieldName": "FirstName",
+						"doCreate": true,
+						"doFind": true,
+						"label": "first_name"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "LastName",
+						"doCreate": true,
+						"doFind": true,
+						"label": "last_name"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "Email",
+						"doCreate": true,
+						"doFind": true,
+						"label": "email_address"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "Online_User_ID__c",
+						"doCreate": true,
+						"doFind": true,
+						"label": "online_user_id"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "User_GUID__c",
+						"doCreate": true,
+						"doFind": true,
+						"label": "user_guid"
+					}
+					]
+				}
+			];
+
+			console.log("Salesforce ExtraPreChatFormDetails:");
+			console.log(sfHrbExtraPreChatFormArray);
+
+			sfHrbExtraPreChatFormArray = [];
+
+			window.parent.ToggleChatIcon(false);
+			window.parent.MaximizeChatFrame(true);
+		});
+    };
+
+	var sfHrbExtraPreChatFormArray = [];
+
+	var SetHRBCustomParameters = function (obj) {
+
+		var props = Object.getOwnPropertyNames(obj);
+		props.forEach(function (p) {
+
+			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
+				sfHrbExtraPreChatFormArray.push({
+					label: p, value: obj[p].Value, displayToAgent: true
+				});
+			}
+			else {
+				sfHrbExtraPreChatFormArray.push({
+					label: p, value: obj[p].Value, displayToAgent: true, transcriptFields: [p]
+				});
+			}
+		});
+		return;
+    };
+	<!-- extraprechatformdetails and extraprechatinfo configuration ENDS here -->
+	
       if (!window.embedded_svc) {
         var s = document.createElement('script');
         s.setAttribute('src', 'https://hrblockenterprise--dev1.my.salesforce.com/embeddedservice/5.0/esw.min.js');
