@@ -203,10 +203,10 @@
 	var sfHrbExtraPreChatFormArray = [];
 
 	var SetHRBCustomParameters = function (obj) {
-
+		console.log('obj: '+obj);
 		var props = Object.getOwnPropertyNames(obj);
 		props.forEach(function (p) {
-
+			console.log('p: '+p+', value: '+obj[p].Value);
 			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
 				sfHrbExtraPreChatFormArray.push({
 					label: p, value: obj[p].Value, displayToAgent: true
