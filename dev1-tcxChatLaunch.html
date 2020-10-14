@@ -13,7 +13,7 @@
 
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
-      var initESW = function(gslbBaseURL) {
+    var initESW = function(gslbBaseURL) {
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -50,82 +50,142 @@
             isOfflineSupportEnabled: false
           }
         );
-	fetchConfigurationParams();
-      };
+    };
 
-		<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
+	<!-- event handlers STARTS here -->
+	embedded_svc.addEventHandler("onHelpButtonClick", function (data) {
+
+		console.log("onHelpButtonClick event was fired.");
+
+		//HRB custom implementation
+		fetchConfigurationParams();
+	});
+
+	embedded_svc.addEventHandler("onChatRequestSuccess", function (data) {
+
+		console.log("onChatRequestSuccess event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatEstablished", function (data) {
+		console.log("onChatEstablished event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChasitorMessage", function (data) {
+		console.log("onChasitorMessage event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+
+		//HRB custom implementation, extending TCX session time out as long as client is exchanging messages
+		parent.PageActions.ExtendTCXSession();
+
+	});
+	embedded_svc.addEventHandler("onAgentMessage", function (data) {
+		console.log("onAgentMessage event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatConferenceInitiated", function (data) {
+		console.log("onChatConferenceInitiated event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onAgentJoinedConference", function (data) {
+		console.log("onAgentJoinedConference event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onAgentLeftConference", function (data) {
+		console.log("onAgentLeftConference event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatConferenceEnded", function (data) {
+		console.log("onChatConferenceEnded event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatTransferSuccessful", function (data) {
+		console.log("onChatTransferSuccessful event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	});
+	embedded_svc.addEventHandler("onChatEndedByChasitor", function (data) {
+		console.log("onChatEndedByChasitor event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+		
+	});
+	embedded_svc.addEventHandler("onChatEndedByAgent", function (data) {
+		console.log("onChatEndedByAgent event was fired. liveAgentSessionKey was " +
+			data.liveAgentSessionKey);
+	
+	<!-- event handlers ENDS here -->
+
+	<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
 	var fetchConfigurationParams = function () {
-            $.getJSON('/chat-client/chatparams.json', function (config) {
+        $.getJSON('/chat-client/chatparams.json', function (config) {
 
-                embedded_svc.settings.prepopulatedPrechatFields = {
+            embedded_svc.settings.prepopulatedPrechatFields = {
                   FirstName: config.first_name.Value,
                   LastName: config.last_name.Value,
                   Email: config.email_address.Value
-                };
-                console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
-                SetHRBCustomParameters(config);
+			};
+			console.log('FirstName: '+FirstName+', LastName: '+LastName+', Email: '+Email);
+			SetHRBCustomParameters(config);
 
-                for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
+			for (var i = 0; i < sfHrbExtraPreChatFormArray.length; i++) {
 
-                    if (sfHrbExtraPreChatFormArray[i].transcriptFields) {
-                        sfHrbExtraPreChatFormArray[i].transcriptFields[0] = sfHrbExtraPreChatFormArray[i].transcriptFields[0] + "__c";
-                    }
-                }
-                embedded_svc.settings.extraPrechatFormDetails = sfHrbExtraPreChatFormArray;
+				if (sfHrbExtraPreChatFormArray[i].transcriptFields) {
+					sfHrbExtraPreChatFormArray[i].transcriptFields[0] = sfHrbExtraPreChatFormArray[i].transcriptFields[0] + "__c";
+				}
+			}
+			embedded_svc.settings.extraPrechatFormDetails = sfHrbExtraPreChatFormArray;
 
-                embedded_svc.settings.extraPrechatInfo = [
-                    {
-                        "entityName": "Contact",
-                        "showOnCreate": true,
-                        //"linkToEntityName": "Case",
-                        "linkToEntityField": "ContactId",
-                        "saveToTranscript": "Contact",
-                        "entityFieldMaps": [{
-                            "isExactMatch": true,
-                            "fieldName": "FirstName",
-                            "doCreate": true,
-                            "doFind": true,
-                            "label": "first_name"
-                        },
-                        {
-                            "isExactMatch": true,
-                            "fieldName": "LastName",
-                            "doCreate": true,
-                            "doFind": true,
-                            "label": "last_name"
-                        },
-                        {
-                            "isExactMatch": true,
-                            "fieldName": "Email",
-                            "doCreate": true,
-                            "doFind": true,
-                            "label": "email_address"
-                        },
-                        {
-                            "isExactMatch": true,
-                            "fieldName": "Online_User_ID__c",
-                            "doCreate": true,
-                            "doFind": true,
-                            "label": "online_user_id"
-                        },
-                        {
-                            "isExactMatch": true,
-                            "fieldName": "User_GUID__c",
-                            "doCreate": true,
-                            "doFind": true,
-                            "label": "user_guid"
-                        }
-                        ]
-                    }
-                ];
+			embedded_svc.settings.extraPrechatInfo = [
+				{
+					"entityName": "Contact",
+					"showOnCreate": true,
+					//"linkToEntityName": "Case",
+					"linkToEntityField": "ContactId",
+					"saveToTranscript": "Contact",
+					"entityFieldMaps": [{
+						"isExactMatch": true,
+						"fieldName": "FirstName",
+						"doCreate": true,
+						"doFind": true,
+						"label": "first_name"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "LastName",
+						"doCreate": true,
+						"doFind": true,
+						"label": "last_name"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "Email",
+						"doCreate": true,
+						"doFind": true,
+						"label": "email_address"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "Online_User_ID__c",
+						"doCreate": true,
+						"doFind": true,
+						"label": "online_user_id"
+					},
+					{
+						"isExactMatch": true,
+						"fieldName": "User_GUID__c",
+						"doCreate": true,
+						"doFind": true,
+						"label": "user_guid"
+					}
+					]
+				}
+			];
 
-                console.log("Salesforce ExtraPreChatFormDetails:");
-                console.log(sfHrbExtraPreChatFormArray);
+			console.log("Salesforce ExtraPreChatFormDetails:");
+			console.log(sfHrbExtraPreChatFormArray);
 
-                sfHrbExtraPreChatFormArray = [];
+			sfHrbExtraPreChatFormArray = [];
 
-                window.parent.ToggleChatIcon(false);
-                window.parent.MaximizeChatFrame(true);
+			window.parent.ToggleChatIcon(false);
+			window.parent.MaximizeChatFrame(true);
             });
         };
 
@@ -146,22 +206,22 @@
                         label: p, value: obj[p].Value, displayToAgent: true, transcriptFields: [p]
                     });
                 }
-            });
-            return;
-        };
-		<!-- extraprechatformdetails and extraprechatinfo configuration ENDS here -->
+		});
+		return;
+    };
+	<!-- extraprechatformdetails and extraprechatinfo configuration ENDS here -->
 		
-      if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://hrblockenterprise--dev1.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-          initESW(null);
-        };
-        document.body.appendChild(s);
-      } else {
-        initESW('https://service.force.com');
-      }
-    </script>
-  <! -- chat agent - embedded service deployment code snippet added ENDS here -->
+	  if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://hrblockenterprise--dev1.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+		  initESW(null);
+		};
+		document.body.appendChild(s);
+	  } else {
+		initESW('https://service.force.com');
+	  }
+	</script>
+	<! -- chat agent - embedded service deployment code snippet added ENDS here -->
   </body>
 </html>
