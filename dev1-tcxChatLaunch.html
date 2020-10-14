@@ -122,7 +122,7 @@
 	
 	<!-- extraprechatformdetails and extraprechatinfo configuration STARTS here -->
 	var fetchConfigurationParams = function () {
-        $.getJSON('/chat-client/chatparams.json', function (config) {
+        $.getJSON('/chatparams', function (config) {
 
             embedded_svc.settings.prepopulatedPrechatFields = {
                   FirstName: config.first_name.Value,
