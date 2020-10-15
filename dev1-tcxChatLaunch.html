@@ -124,11 +124,6 @@
         var url = new URL(queryString);
 		var paramList = url.searchParams.get("paramList");
 		var config = JSON.parse(paramList);
-//        var lastName = url.searchParams.get("last_name");
-//        var emailAddress = url.searchParams.get("email_address");
-//       var diyConsentFlag = url.searchParams.get("diy_consent_flag");
-//        var tcxId = url.searchParams.get("tcx_id");
-//		console.log('FirstName: '+firstName+', LastName: '+lastName+', Email: '+emailAddress+', diyConsentFlag:'+diyConsentFlag+', tcxId:'+tcxId);
 		
             embedded_svc.settings.prepopulatedPrechatFields = {
 					FirstName: config.first_name,
