@@ -224,7 +224,7 @@
 		var props = Object.getOwnPropertyNames(obj);
 		props.forEach(function (p) {
 			console.log('p: '+p+', value: '+obj[p].valueOf());
-			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject') {
+			if (p == 'first_name' || p == 'last_name' || p == 'full_name' || p == 'email_address' || p == 'user_guid' || p == 'hrblock_atp' || p == 'online_user_id' || p == 'subject' || p == 'giid') {
 				sfHrbExtraPreChatFormArray.push({
 					label: p, value: obj[p].valueOf(), displayToAgent: true
 				});
