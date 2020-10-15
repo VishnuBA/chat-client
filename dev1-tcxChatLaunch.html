@@ -191,18 +191,17 @@
 					]
 				},
 				{
-					"entityName": "Account",
-					"showOnCreate": true,
-					//"linkToEntityName": "Case",
-					//"linkToEntityField": "ContactId",
-					//"saveToTranscript": "Contact",
-					"entityFieldMaps": [{
-						"isExactMatch": true,
-						"fieldName": "GIID__c",
-						"doCreate": true,
-						"doFind": true,
-						"label": "giid"
-					}]
+				   "entityName":"Account",
+				   "showOnCreate":true,
+				   "entityFieldMaps":[
+					  {
+						 "isExactMatch":true,
+						 "fieldName":"Name",
+						 "doCreate":true,
+						 "doFind":true,
+						 "label":"last_name"
+					  }
+				   ]
 				}
 			];
 
