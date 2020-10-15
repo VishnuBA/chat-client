@@ -150,7 +150,7 @@
 				{
 					"entityName": "Contact",
 					"showOnCreate": true,
-					//"linkToEntityName": "Case",
+					"linkToEntityName": "Case",
 					"linkToEntityField": "ContactId",
 					"saveToTranscript": "Contact",
 					"entityFieldMaps": [{
@@ -203,6 +203,13 @@
 						 "doCreate":true,
 						 "doFind":true,
 						 "label":"last_name"
+					  },
+					  {
+						"isExactMatch": true,
+						"fieldName": "GIID__c",
+						"doCreate": true,
+						"doFind": true,
+						"label": "giid"
 					  }
 				   ]
 				}
