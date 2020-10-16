@@ -184,7 +184,30 @@
 						"label": "user_guid"
 					}
 					]
-				}
+				},
+				{
+						"entityName": "Account",
+						"showOnCreate": true,
+						"linkToEntityName": "Case",
+						"linkToEntityField": "AccountId",
+						"saveToTranscript": "AccountId",
+						"entityFieldMaps": [
+							{
+								"isExactMatch": false,
+								"fieldName": "Name",
+								"doCreate": true,
+								"doFind": false,
+								"label": "LastName"
+							},
+							{
+								"isExactMatch": false,
+								"fieldName": "TCX_ID__c",
+								"doCreate": true,
+								"doFind": false,
+								"label": "tcx_id"
+							}
+						]
+					}
 			];
 
 			console.log("Salesforce ExtraPreChatFormDetails:");
