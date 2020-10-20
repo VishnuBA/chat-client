@@ -198,12 +198,19 @@
 								"label": "full_name"
 							},
 							{
-								"isExactMatch": false,
+								"isExactMatch": true,
 								"fieldName": "TCX_ID__c",
 								"doCreate": true,
-								"doFind": false,
+								"doFind": true,
 								"label": "tcx_id"
-							}					
+							},
+							{
+								"isExactMatch": true,
+								"fieldName": "RecordTypeId",
+								"doCreate": true,
+								"doFind": true,
+								"label": "record_type"
+							}
 						]
 					}
 			];
