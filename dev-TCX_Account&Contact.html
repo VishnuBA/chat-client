@@ -180,39 +180,16 @@
 						"doCreate": true,
 						"doFind": true,
 						"label": "user_guid"
-					}
-					]
-				},
-				{
-						"entityName": "Account",
-						"showOnCreate": true,
-						"linkToEntityName": "Contact",
-						"linkToEntityField": "AccountId",
-						"saveToTranscript": "AccountId",
-						"entityFieldMaps": [
-							{
-								"isExactMatch": true,
-								"fieldName": "Name",
-								"doCreate": true,
-								"doFind": true,
-								"label": "full_name"
-							},
+					},
 							{
 								"isExactMatch": true,
 								"fieldName": "TCX_ID__c",
 								"doCreate": true,
 								"doFind": true,
 								"label": "tcx_id"
-							},
-														{
-								"isExactMatch": true,
-								"fieldName": "RecordTypeId",
-								"doCreate": true,
-								"doFind": true,
-								"label": "record_type"
 							}
-						]
-					}
+					]
+				}
 			];
 
 			console.log("Salesforce ExtraPreChatFormDetails:");
