@@ -142,44 +142,51 @@
 			embedded_svc.settings.extraPrechatFormDetails = sfHrbExtraPreChatFormArray;
 
 			embedded_svc.settings.extraPrechatInfo = [
-				{
-					"entityName": "Contact",
-					"showOnCreate": true,
-					"saveToTranscript": "ContactId",
-					"entityFieldMaps": [{
-						"isExactMatch": true,
-						"fieldName": "FirstName",
-						"doCreate": true,
-						"doFind": true,
-						"label": "first_name"
-					},
 					{
-						"isExactMatch": true,
-						"fieldName": "LastName",
-						"doCreate": true,
-						"doFind": true,
-						"label": "last_name"
-					},
-					{
-						"isExactMatch": true,
-						"fieldName": "Email",
-						"doCreate": true,
-						"doFind": true,
-						"label": "email_address"
-					},
-					{
-						"isExactMatch": true,
-						"fieldName": "Online_User_ID__c",
-						"doCreate": true,
-						"doFind": true,
-						"label": "online_user_id"
-					},
-					{
-						"isExactMatch": true,
-						"fieldName": "User_GUID__c",
-						"doCreate": true,
-						"doFind": true,
-						"label": "user_guid"
+						"entityName": "Contact",
+						"showOnCreate": true,
+						"saveToTranscript": "ContactId",
+						"entityFieldMaps": [{
+							"isExactMatch": true,
+							"fieldName": "FirstName",
+							"doCreate": true,
+							"doFind": true,
+							"label": "first_name"
+						},
+						{
+							"isExactMatch": true,
+							"fieldName": "LastName",
+							"doCreate": true,
+							"doFind": true,
+							"label": "last_name"
+						},
+						{
+							"isExactMatch": false,
+							"fieldName": "Email",
+							"doCreate": true,
+							"doFind": false,
+							"label": "email_address"
+						},
+						{
+							"isExactMatch": true,
+							"fieldName": "Online_User_ID__c",
+							"doCreate": true,
+							"doFind": true,
+							"label": "online_user_id"
+						},
+						{
+							"isExactMatch": false,
+							"fieldName": "User_GUID__c",
+							"doCreate": true,
+							"doFind": false,
+							"label": "user_guid"
+						},
+						{
+							"isExactMatch": false,
+							"fieldName": "DIY_Offshore_Consent__c",
+							"doCreate": true,
+							"doFind": false,
+							"label": "diy_offshore_consent"
 					}
 					]
 				}
